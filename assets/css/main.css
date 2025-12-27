@@ -1,0 +1,107 @@
+/* ۱. بیس و متغیرهای گلوبال */
+@import url("./base/_reset.css");
+@import url("../css/base/variables.css");
+
+/* ۲. استایل‌های ساختار اصلی */
+@import url("./layout/header.css");
+@import url("./layout/nav.css");
+@import url("./layout/slider.css");
+@import url("./Layout/home.css");
+@import url("./layout/rigesterview.css");
+@import url("./layout/singlebox.css");
+@import url("./layout/circuleBox.css");
+@import url("./layout/footer.css");
+@import url("./layout/product.css");
+@import url("./layout/checkout.css");
+@import url("./layout/cart.css");
+
+/* ۳. استایل‌های کامپوننت‌ها */
+/* @import url("./components/button.css"); */
+/* @import url("./components/product-card.css"); */
+/* @import url("./components/form.css"); */
+
+/* ۴. استایل‌های صفحات خاص */
+/* @import url("./pages/checkout.css"); */
+
+/* Mobile Optimization: تبدیل شدن به Column در ابعاد کوچک */
+@media (max-width: 768px) {
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ۲. استایل‌های پایه بدنه */
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  width: 100%;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-base);
+  color: var(--color-text-dark);
+  background-color: var(--color-background-main);
+  line-height: 1.5; /* خوانایی بهتر */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* App container - wraps all layout */
+#mainroot {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Header and Nav stay at top */
+.header,
+.nav {
+  flex-shrink: 0; /* don't shrink */
+}
+
+/* Main content area grows and scrolls if needed */
+main {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Page wrapper for routed content */
+.page-wrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+}
+
+/* Footer positioning inside main - already styled in footer.css */
+
+/* 
+
+a {
+    color: var(--color-amazon-link);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+a:hover {
+    color: var(--color-amazon-hover);
+    text-decoration: underline;
+}
+
+h3 {
+    font-size: var(--font-size-h3);
+    margin-bottom: var(--spacing-lg);
+} */

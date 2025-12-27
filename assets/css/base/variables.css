@@ -1,0 +1,22 @@
+:root {
+  --color-amazon-blue-dark: #232F3E;
+
+  --color-amazon-blue-light: #37475A;
+  --color-amazon-orange: #37475A;
+  --color-amazon-link: #007185;
+  --color-amazon-hover: #514946;
+  --color-amazon-headBg: #CECECE;
+
+  --color-text-dark: #0f1111;
+  --color-background-main: #e3e6e6;
+  --color-background-card: #ffffff;
+
+  --font-family-main: Arial, sans-serif;
+  --font-size-base: 13px;
+  --font-size-h3: 21px;
+
+  --spaceing-xs: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 20px;
+  --border-radius-sm: 4px;
+}

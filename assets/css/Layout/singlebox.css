@@ -1,0 +1,23 @@
+.sianglebox{
+  display: flex;
+  width: 100%;
+  gap: 1rem;
+  padding: 1rem;
+}
+.contain {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  gap: 1rem;
+  padding: 1rem;
+  min-width: 300px;
+  height: 500px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.productImages img {
+  width: 100%;
+  height: auto;
+} 

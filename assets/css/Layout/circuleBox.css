@@ -1,0 +1,36 @@
+.circuleBox{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 1rem;
+  width: 100%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.contain{
+  display: flex;
+   scrollbar-width: none;
+  position: relative;
+  padding: 1rem;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.contain ::-webkit-scrollbar {
+  display: none;
+}
+.productImage {
+display: flex;
+flex-direction: row;
+overflow: hidden;
+overflow-x:scroll;
+
+
+
+ 
+}
+
+.productImage img {
+  width: 13rem;
+  height: auto;
+}
+ 
