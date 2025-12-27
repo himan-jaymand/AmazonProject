@@ -1,0 +1,96 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  background: whitesmoke;
+  color: #333;
+  min-height: auto;
+}
+.sign-in-button{
+  width: 300px;
+  height: 40px;
+  background-color: #f0c14b;
+  border: 1px solid #a88734;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+
+}
+.footer-content h3 {
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+}
+
+.footer-content p {
+  font-size: 13px;
+  margin: 0;
+}
+
+.footer-button {
+  padding: 0.5rem;
+  background: #3e455d;
+}
+.button {
+  display: flex;
+  top: 0;
+  width: 100%;
+  height: 3rem;
+  border: none;
+  padding: 1rem;
+  background: #3e455d;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: large;
+  color: azure;
+}
+.footer-links {
+  padding: 1.5rem;
+  display: flex;
+  background: #131e43;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-links ul {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  list-style-type: none;
+  padding: 0;
+  text-decoration: none;
+  color: #ccc;
+  min-width: 150px;
+}
+
+.footer-links ul h3 {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.footer-links ul li {
+  color: #ccc;
+  font-size: 13px;
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+
+.footer-links ul li:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+ 
