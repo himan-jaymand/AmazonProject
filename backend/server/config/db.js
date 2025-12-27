@@ -2,26 +2,32 @@
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 
-const connectDB = async () => {
-  dotenv.config({ path: "./.env" });
-
-  console.log("🔍 MongoDB Connection Debug:");
-  console.log("   URI Present:", !!process.env.MONGO_URI);
-  console.log("   URI Length:", process.env.MONGO_URI?.length || 0);
-  console.log("   URI Start:", process.env.MONGO_URI?.substring(0, 30) + "...");
-
-  try {
+const connectDB = async () => {   try {  try {
+    dotenv.config({ path: "./.env" });
     const conn = await mongoose.connect(process.env.MONGO_URI, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+
       serverSelectionTimeoutMS: 5000,
+
       socketTimeoutMS: 45000,
+
     });
     console.log(`✅ MongoDB connected: ${conn.connection.host}`);
+
     return conn;
+
   } catch (error) {
+
     console.error(`❌ MongoDB connection error: ${error.message}`);
+
     console.error("Full error:", error);
-    process.exit(1);
+    throw new Error(`Failed to connect to MongoDB: ${error.message}`);
+
+  }
+} catch (error) {
+    console.error("Unexpected error during DB connection:", error);
+    throw error;
   }
 };
-
 export default connectDB;
