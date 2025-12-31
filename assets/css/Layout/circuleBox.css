@@ -8,7 +8,6 @@
 }
 .contain{
   display: flex;
-   scrollbar-width: none;
   position: relative;
   padding: 1rem;
   width: 100%;
@@ -19,10 +18,11 @@
   display: none;
 }
 .productImage {
-display: flex;
-flex-direction: row;
-overflow: hidden;
-overflow-x:scroll;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  overflow-x: scroll;
+  scrollbar-width: none;
 
 
 

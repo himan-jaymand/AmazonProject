@@ -8,7 +8,7 @@
 }
 .product-page {
   display: grid;
-  grid: auto-flow / 1fr 1fr .6fr;
+  grid: auto-flow / 1fr 1fr 0.6fr;
   gap: 20px;
   align-items: start;
   padding: 24px;
@@ -212,10 +212,9 @@
   padding: 0.3rem;
 }
 .buy-box {
-
   display: flex;
   flex-direction: column;
-   width: 100%; 
+  width: 100%;
   padding: 15px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
@@ -237,14 +236,15 @@
 .currency {
   font-size: 13px;
   position: relative;
-  top: 4px; 
+  top: 4px;
   margin-right: 2px;
 }
 
-.currency, .decimals {
+.currency,
+.decimals {
   font-size: 13px;
   font-weight: 500;
-  padding-top: 4px; 
+  padding-top: 4px;
 }
 .amount {
   font-size: 28px;
@@ -403,6 +403,9 @@ select {
   width: 50%;
 }
 .verify-container button {
-  height: 2 rem;
+  height: 2rem;
+  background-color: var(--color-amazon-orange);
+  border: none;
+  border-radius: 4px;
+  color: #fff;
 }
-

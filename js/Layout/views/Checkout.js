@@ -130,25 +130,25 @@ export function Checkout() {
 
   <div class="selector-header">
     <div class="current-card">
-      <img src="${cartItems[0].imagePath}"   data-img="${cartItems[0].data}" alt="Visa" id="selectedCardImg">
+      <img src="${cartItems[0].imagePath}"   data-img="${
+    cartItems[0].data
+  }" alt="Visa" id="selectedCardImg">
       <span id="selectedCardName">Visa Card</span>
     </div>
     <span class="arrow">▼</span>
   </div>
 
   <ul class="selector-options">
-    <li class="option-item" data-value="visa" data-img="${cartItems[1].data}">
-      <img src="${cartItems[1].imagePath}" alt="Visa">
-      <span>Visa Card</span>
-    </li>
-    <li class="option-item" data-value="mastercard" data-img="${cartItems[2].data}">
-      <img src="${cartItems[2].imagePath}" alt="Mastercard">
-      <span>Mastercard</span>
-    </li>
-    <li class="option-item" data-value="paypal" data-img="${cartItems[3].data}">
-      <img src="${cartItems[3].imagePath}" alt="PayPal">
-      <span>PayPal</span>
-    </li>
+    ${cartItems
+      .map(
+        (item) => `
+      <li class="option-item" data-value="${item.data}" data-img="${item.data}">
+        <img src="${item.imagePath}" alt="${item.name}">
+        <span>${item.name}</span>
+      </li>
+    `
+      )
+      .join("")}
   </ul>
 </div>
         <span>${userData.paymentMethod}</span>

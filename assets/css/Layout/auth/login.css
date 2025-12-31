@@ -51,13 +51,11 @@
 /* Labels in form */
 .header-form p {
   font-size: 1.5rem;
-  font: bold;
   font-weight: bold;
 }
 .container-form label {
   display: flex;
   justify-content: flex-start;
-  font: bold;
   font-weight: 700;
 }
 /* Input fields */

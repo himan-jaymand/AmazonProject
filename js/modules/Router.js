@@ -1,22 +1,10 @@
-// document.addEventListener("click", (e) => {
-//   const { target } = e;
-//   if (!target.matches("nav a")) return;
-//   e.preventDefault();
-//   handleRoute();
-// });
-
-// import { render } from './renderer.js';
-// import { NotFound } from "../views/notFound.js";
-
-// js/router/Router.js
-
 import { render } from "./renderer.js";
 
 const routes = [
   // note: the project contains `RigesterView.js` (typo) — point the router to that file
   {
     path: "#/register",
-    view: () => import("../Layout/views/auth/RigesterView.js"),
+    view: () => import("../Layout/views/auth/RegisterView.js"),
   },
   { path: "#/home", view: () => import("../Layout/views/main/Home.js") },
   { path: "#/login", view: () => import("../Layout/views/auth/Login.js") },
@@ -49,17 +37,15 @@ export function initRouter(mountSelector, store) {
 
   async function handleRoute() {
     const hash = location.hash || "#/home";
-    const { path, params } = parseRoute(hash);
+    const { path, params } = parseRoute(hash);    
 
     let route = routes.find((r) => r.path === path);
-
-    // اگر نبود → NotFound
     if (!route) {
       mountEl.innerHTML = "<h2>404 - Not Found</h2>";
       return;
     }
 
-    // اگر guard داشت (مثل نیاز به لاگین)
+  
     if (route.guard === "auth" && !localStorage.getItem("token")) {
       location.hash = "#/login";
       return;
@@ -72,10 +58,10 @@ export function initRouter(mountSelector, store) {
       // - module.render(params, store)  (preferred)
       // - module.default(params, store) (common here: default export returns element)
       // - module (if it directly exports an HTMLElement)
-      let viewEl;
-      if (module && typeof module.render === "function") {
+      let viewEl = null;
+      if (typeof module.render === "function") {
         viewEl = await module.render(params, store);
-      } else if (module && typeof module.default === "function") {
+      } else if (typeof module.default === "function") {
         // call default export; some modules return an element directly
         viewEl = await module.default(params, store);
       } else if (module && module instanceof HTMLElement) {
@@ -90,23 +76,23 @@ export function initRouter(mountSelector, store) {
         }
       }
 
-      render(mountEl, viewEl);
-    } catch (err) {
-      console.error("router error:", err);
+
+      await render(mountEl, viewEl);
+    } catch (e) {
+      console.error("Route rendering failed:", e);
       mountEl.innerHTML = "<h2>Error loading page</h2>";
     }
+
   }
 
+  window.addEventListener("hashchange", handleRoute);
   return {
-    start() {
-      window.addEventListener("hashchange", handleRoute);
-      handleRoute(); // render initial route
-    },
+    start: handleRoute,
   };
 }
 
 export const Router = {
   navigate(path) {
-    location.hash = path.startsWith("#") ? path : `#${path}`;
+    location.hash = path.startsWith("#/") ? path : `#${path}`;
   },
-};
+};    

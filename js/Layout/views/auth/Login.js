@@ -8,8 +8,7 @@ export default function Login() {
   <div class="container-form">
   <div class="header-form">
     <img src="/assets/Images/icon/amazon_logo.png" alt="logo" />
-    <p>Wellcome<p />
-  </div>
+    <p>Welcome</p>  </div>
 
       <div class="email">
         <label for="email">Email</label>
@@ -21,9 +20,7 @@ export default function Login() {
           <input type="password" id="password" placeholder="Password" />
         </div>
 
-        <button type="submit">Verify email</button>
-        <div class="bottom-section">
-          <p>
+        <button type="submit">Sign in</button>          <p>
             Create a free business account
             <a href="#/register" id="show-login"> Sign up</a>
           </p>

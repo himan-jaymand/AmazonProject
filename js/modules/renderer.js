@@ -14,7 +14,7 @@
 export async function render(mountEl, content,store, options = {}) {
   if (!mountEl) throw new Error("mountEl required");
   mountEl.innerHTML = "";
-
+ 
   const {
     enterClass = "page-enter",
     leaveClass = "page-leave",

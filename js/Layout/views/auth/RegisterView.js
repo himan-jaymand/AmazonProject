@@ -1,9 +1,9 @@
 import { AuthService } from "../../../services/Auth.service.js";
 
-export default function RegisterView() {
-  const rigester = document.createElement("div");
-  rigester.classList = "form";
-  rigester.innerHTML = `
+export default function RegisterView(params, store) {
+  const register = document.createElement("div");
+  register.classList = "form";
+  register.innerHTML = `
    <form action="">
       <div class="container-form">
         <div class="header-form">
@@ -11,18 +11,12 @@ export default function RegisterView() {
           <p>Create account</p>
         </div>
         <div class="name">
-          <label for="ame">Your name</label>
+          <label for="name">Your name</label>
           <input type="text" id="name" />
         </div>
-
         <div class="username">
           <label for="lastname">LastName</label>
           <input type="text" id="lastname" />
-        </div>
-
-        <div class="birthday">
-          <label for="BirthDay">BirthDay</label>
-          <input type="date" id="BirthDay" />
         </div>
 
         <div class="pass">
@@ -49,21 +43,20 @@ export default function RegisterView() {
     </form>
   `;
   // attach form submit handler
-  const form = rigester.querySelector("form");
+  const form = register.querySelector("form");
   form &&
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name = rigester.querySelector("#name")?.value || "";
-      const lastname = rigester.querySelector("#lastname")?.value || "";
-      const birthday = rigester.querySelector("#BirthDay")?.value || "";
-      const password = rigester.querySelector("#password")?.value || "";
-      const email = rigester.querySelector("#email")?.value || "";
+      const name = register.querySelector("#name")?.value || "";
+      const lastname = register.querySelector("#lastname")?.value || "";
+      const birthday = register.querySelector("#BirthDay")?.value || "";
+      const password = register.querySelector("#password")?.value || "";
+      const email = register.querySelector("#email")?.value || "";
 
       try {
         const res = await AuthService.register({
           name,
           lastname,
-          birthday,
           email,
           password,
         });
@@ -76,5 +69,5 @@ export default function RegisterView() {
       }
     });
 
-  return rigester;
+  return register;
 }
