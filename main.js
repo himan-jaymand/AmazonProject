@@ -1,8 +1,8 @@
-import { initRouter } from "./js/modules/Router.js";
-import { Header } from "./js/Layout/views/head/Header.js";
-import { Nav } from "./js/Layout/views/head/Nav.js";
-import { initStore } from "./js/modules/Store.js";
-import { Footer } from "./js/Layout/views/Footer.js";
+import { initRouter } from "./frontend/modules/Router.js";
+import { Header } from "./frontend/Layout/views/head/Header.js";
+import { Nav } from "./frontend/Layout/views/head/Nav.js";
+import { initStore } from "./frontend/modules/Store.js";
+import { Footer } from "./frontend/Layout/views/Footer.js";
 
 const store = initStore();
 window.__APP_STORE__ = store; // debugging only

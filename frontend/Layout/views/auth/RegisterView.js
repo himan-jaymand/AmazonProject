@@ -14,7 +14,7 @@ export default function RegisterView(params, store) {
           <label for="name">Your name</label>
           <input type="text" id="name" />
         </div>
-        <div class="username">
+        <div class="lastname">
           <label for="lastname">LastName</label>
           <input type="text" id="lastname" />
         </div>
@@ -47,25 +47,28 @@ export default function RegisterView(params, store) {
   form &&
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name = register.querySelector("#name")?.value || "";
-      const lastname = register.querySelector("#lastname")?.value || "";
-      const birthday = register.querySelector("#BirthDay")?.value || "";
-      const password = register.querySelector("#password")?.value || "";
-      const email = register.querySelector("#email")?.value || "";
+      const nameInput = register.querySelector("#name")?.value || "";
+      const lastnameInput = register.querySelector("#lastname")?.value || "";
+      // const birthday = register.querySelector("#BirthDay")?.value || "";
+      const passwordInput = register.querySelector("#password")?.value || "";
+      const emailInput = register.querySelector("#email")?.value || "";
 
       try {
-        const res = await AuthService.register({
-          name,
-          lastname,
-          email,
-          password,
-        });
+       // RegisterView.js
+       const userData = {
+         name: nameInput,
+         lastname: lastnameInput,
+         email: emailInput,
+         password: passwordInput,
+       };
+       
+       await AuthService.register(userData); // کل آبجکت را بفرست
         console.log("Register success", res);
         // on success, navigate to home or show verification
         window.location.hash = "#/login";
       } catch (err) {
         console.error("Register failed", err);
-        alert(err.message || "Registration failed");
+        console.log(err.message || "Registration failed");
       }
     });
 

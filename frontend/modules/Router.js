@@ -37,7 +37,7 @@ export function initRouter(mountSelector, store) {
 
   async function handleRoute() {
     const hash = location.hash || "#/home";
-    const { path, params } = parseRoute(hash);    
+    const { path, params } = parseRoute(hash);
 
     let route = routes.find((r) => r.path === path);
     if (!route) {
@@ -45,7 +45,6 @@ export function initRouter(mountSelector, store) {
       return;
     }
 
-  
     if (route.guard === "auth" && !localStorage.getItem("token")) {
       location.hash = "#/login";
       return;
@@ -76,13 +75,11 @@ export function initRouter(mountSelector, store) {
         }
       }
 
-
       await render(mountEl, viewEl);
     } catch (e) {
       console.error("Route rendering failed:", e);
       mountEl.innerHTML = "<h2>Error loading page</h2>";
     }
-
   }
 
   window.addEventListener("hashchange", handleRoute);
@@ -93,6 +90,6 @@ export function initRouter(mountSelector, store) {
 
 export const Router = {
   navigate(path) {
-    location.hash = path.startsWith("#/") ? path : `#${path}`;
+    location.hash = path.startsWith("/#") ? path : `#${path}`;
   },
-};    
+};

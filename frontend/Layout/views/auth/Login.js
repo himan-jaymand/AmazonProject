@@ -41,7 +41,7 @@ export default function Login() {
       try {
         const res = await AuthService.login({ email, password });
         console.log("Login success", res);
-        window.location.hash = "#/";
+        window.location.hash = "/";
       } catch (err) {
         console.error("Login failed", err);
         alert(err.message || "Login failed");
