@@ -5,9 +5,11 @@
 /* ۲. استایل‌های ساختار اصلی */
 @import url("./layout/header.css");
 @import url("./layout/nav.css");
+@import url("./Layout/auth/draverNav.css");
 @import url("./layout/slider.css");
-@import url("./Layout/home.css");
-@import url("./layout/rigesterview.css");
+@import url("./layout/home.css");
+@import url("./layout/auth/registerview.css");
+@import url("./layout/auth/login.css");
 @import url("./layout/singlebox.css");
 @import url("./layout/circuleBox.css");
 @import url("./layout/footer.css");

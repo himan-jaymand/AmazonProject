@@ -1,21 +1,13 @@
 export default function Product(data) {
-  // const productData = {
-  //   id: 101,
-  //   title: "",
-  //   imagePaths: [
-  //     "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
-  //     "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
-  //     "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
-  //     "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
-  //     "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
-  //   ],
-  // };
-
   const productData = {
-    id: data.id || 101,
+      id: data.id || 101,
     title: data.title || "...",
     price: data?.price || 203.99,
     imagePaths: data?.path || [
+      "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
+      "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
+      "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
+      "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
       "../assets/Images/tech & gaming/imgi_289_710GQJJHx2L._AC_SY400_.jpg",
     ],
   };

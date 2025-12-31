@@ -1,7 +1,11 @@
 // js/services/Api.js
+const TOKEN_KEY = "authToken";
+const AUTH_TOKEN_KEY = "authToken"; //key for localStorage
 
-// تابعی برای انجام درخواست‌های عمومی
-const API_BASE_URL = "http://localhostnpm start:5502";
+
+const API_BASE_URL =
+  (typeof window !== "undefined" && window.__API_BASE__) ||
+  "http://127.0.0.1:5502";
 
 async function request(endpoint, method = "GET", data = null) {
   const url = `${API_BASE_URL}/${endpoint}`;
@@ -11,7 +15,7 @@ async function request(endpoint, method = "GET", data = null) {
       "Content-Type": "application/json",
 
       // توکن احراز هویت را از Local Storage اضافه کنید
-
+    
       Authorization: `Bearer ${localStorage.getItem("authToken") || ""}`,
     },
     body: data ? JSON.stringify(data) : null,

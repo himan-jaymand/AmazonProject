@@ -1,17 +1,62 @@
-
 .nav {
   display: flex;
   align-items: center;
   background: var(--color-amazon-blue-light);
   color: #fff;
 }
-.nav div {
+
+.all-menu {
   display: flex;
   align-items: center;
   gap: 5px;
   font-weight: 500;
-  font-size: 18px;
+  margin-left: 15px;
+  justify-content: baseline;
 }
-.nav p {
-  padding: 4px;
+.all-menu button {
+  background: none;
+  border: none;
+  color: #dbc5c5;
+  cursor: pointer;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  gap: 15px;
+}
+.nav-links ul {
+  display: flex;
+  list-style: none;
+  gap: 15;
+}
+.nav-links ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+.toggleDrawer-btn button {
+  display: flex;
+  background: var(--color-amazon-blue-light);
+  width: 100%;
+  padding: 0.5rem;
+  height: 3rem;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  border: none;
+  outline: none;
+}
+.toggleDrawer-btn img {
+  width: 2rem;
+  height: 2rem;
+}
+.toggleDrawer-btn:hover{
+  border:1px solid;
+}
+li:hover {
+  border: 1px solid;
 }

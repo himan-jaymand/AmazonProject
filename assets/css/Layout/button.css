@@ -1,4 +1,4 @@
-btn {
+.btn {
   padding: 5px 15px;
   border: 1px solid;
   border-radius: var(--border-radius-sm);
@@ -8,13 +8,13 @@ btn {
   display: inline-block;
 }
 
-btn-primary {
+.btn-primary {
   background-color: var(--color-amazon-orange);
   border-color: #ff8f00; /* کمی تیره‌تر برای عمق */
   color: var(--color-text-dark); /* متن تیره روی نارنجی */
   font-weight: bold;
 }
 
-btn-primary:hover {
+.btn-primary:hover {
   background-color: #ff8500; /* تیره‌تر شدن هنگام هوور */
 }

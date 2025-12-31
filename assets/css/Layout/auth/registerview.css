@@ -1,4 +1,4 @@
-/* Register form container - fills available space but doesn't use absolute positioning */
+/* Register form container - fills available space but doesn't use absolute positioning
 .form {
   position: relative;
   display: flex;
@@ -16,12 +16,12 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-gap: 1rem;
+  gap: 1rem;
   max-width: 400px;
   border: 1px solid #ddd;
   padding: 1rem;
   border-radius: 5px;
-  background-color:rgb(205, 201, 201);
+  background-color: rgb(205, 201, 201);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .form-logo-container {
@@ -32,7 +32,7 @@ gap: 1rem;
   width: 100%;
   margin-bottom: 1rem;
 }
-.header-form{
+.header-form {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -50,17 +50,14 @@ gap: 1rem;
 
 /* Labels in form */
 .header-form p {
-font-size: 1.5rem;
-font:bold;
-font-weight: bold;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
-.container-form label{
+.container-form label {
   display: flex;
   justify-content: flex-start;
-  font: bold;
-  font-weight: 700;  
-} 
-/* Input fields */
+  font-weight: 700;
+} /* Input fields */
 .container-form input,
 .container input {
   width: 100%;
@@ -119,4 +116,4 @@ font-weight: bold;
 
 .bottom-section a:hover {
   text-decoration: underline;
-}
+} 

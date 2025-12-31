@@ -1,0 +1,123 @@
+
+// import { render } from './renderer.js';
+// import { NotFound } from "../views/notFound.js";
+
+// js/router/Router.js
+
+
+
+import { render } from "./renderer.js";
+import * as Auth from "./Authentication/Auth.js";
+
+const routes = [
+  {
+    path: "#/register",
+    view: () => import("../Layout/views/auth/RegisterView.js"),
+  },
+  { path: "#/home", view: () => import("../Layout/views/main/Home.js") },
+  { path: "#/login", view: () => import("../Layout/views/auth/Login.js") },
+  { path: "#/product", view: () => import("../Layout/views/Product.js") },
+  { path: "#/checkout", view: () => import("../Layout/views/Checkout.js") },
+  { path: "#/cart", view: () => import("../Layout/views/cartView.js") },
+];
+
+// Parse query parameters from a URL query string
+function parseQuery(queryString) {
+  const params = {};
+  queryString?.split("&").forEach((pair) => {
+    const [key, val] = pair.split("=");
+    params[key] = decodeURIComponent(val || "");
+  });
+  return params;
+}
+
+function parseRoute(hash) {
+  const [path, query] = hash.split("?");
+  return {
+    path,
+    params: parseQuery(query),
+  };
+}
+
+export function initRouter(mountSelector, store) {
+  const mountEl = document.querySelector(mountSelector);
+  if (!mountEl) throw new Error("mount element not found");
+
+  async function handleRoute() {
+    const hash = location.hash || "#/home";
+    const { path, params } = parseRoute(hash);
+
+    let route = routes.find((r) => r.path === path);
+
+    // If route not found → show 404
+    if (!route) {
+      mountEl.innerHTML = "<h2>404 - Not Found</h2>";
+      return;
+    }
+
+    // If route requires auth, delegate the check to the Auth module.
+    // Router should NOT access localStorage directly — token storage/validation
+    // must be encapsulated inside the Auth module (and ideally use httpOnly
+    // cookies for session tokens to mitigate XSS). The Auth module exposes
+    // an async check (e.g. checkStatus or isAuthenticated) returning a boolean.
+    if (route.guard === "auth") {
+      try {
+        // Prefer a dedicated boolean method; fallback to checkStatus if present
+        const isAuth =
+          typeof Auth.isAuthenticated === "function"
+            ? await Auth.isAuthenticated()
+            : typeof Auth.checkStatus === "function"
+            ? await Auth.checkStatus()
+            : false;
+
+        if (!isAuth) {
+          // Not authenticated → redirect to login
+          location.hash = "#/login";
+          return;
+        }
+      } catch (e) {
+        console.error("Auth check failed:", e);
+        location.hash = "#/login";
+        return;
+      }
+    }
+
+    try {
+      const module = await route.view();
+
+      // Accepted view module contract (choose one):
+      // 1) Named export: export async function render(params, store) { ... }
+      // 2) Default export: export default async function(params, store) { ... }
+      // Router will call either `module.render(params, store)` or `module.default(params, store)`.
+      // Do NOT rely on module instanceof HTMLElement or arbitrary function discovery here.
+      let viewEl;
+      if (module && typeof module.render === "function") {
+        viewEl = await module.render(params, store);
+      } else if (module && typeof module.default === "function") {
+        viewEl = await module.default(params, store);
+      } else {
+        throw new Error(
+          "Invalid view module: expected a named async 'render(params, store)' function or a default export function."
+        );
+      }
+
+      render(mountEl, viewEl);
+    } catch (err) {
+      console.error("router error:", err);
+      mountEl.innerHTML = "<h2>Error loading page</h2>";
+    }
+  }
+
+  return {
+    start() {
+      window.addEventListener("hashchange", handleRoute);
+      handleRoute(); // render initial route
+    },
+  };
+}
+
+export const Router = {
+  navigate(path) {
+    location.hash = path.startsWith("#") ? path : `#${path}`;
+  },
+};
